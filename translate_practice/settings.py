@@ -38,16 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # do i really need this?
-    'django.contrib.sites',
-
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
-    'rest_auth.registration',
+    'django.contrib.sites',
     'allauth',
-    'allauth.account'
+    'allauth.account',
+    'rest_auth.registration',
 
+    'translate'
 ]
 SITE_ID = 1
 ACCOUNT_AUTHENTICATION_METHOD = 'email'

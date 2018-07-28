@@ -1,4 +1,5 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from google.cloud import translate_v2
@@ -11,9 +12,13 @@ from translate.models import TranslationEvent
 
 
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated,])
 def translation(request):
     if request.method == 'GET':
-        pass
+        translations = TranslationEvent.objects.filter(user=request.user).order_by('-id')
+        # translations = TranslationEvent.objects.all()
+        serializer = TranslateSerializerResponse(translations, many=True)
+        return Response(serializer.data)
 
     if request.method == 'POST':
         serializer_request = TranslateSerializerRequest(data=request.data, context={'request': request})

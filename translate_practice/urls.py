@@ -23,5 +23,6 @@ urlpatterns = [
     path('api/v1/auth/registration/', include('rest_auth.registration.urls')),
 
 
-    path('api/v1/translate/', include('translate.urls'))
+    path('api/v1/translate/', include('translate.urls')),
+    path('api/v1/practice/', include('practice.urls'))
 ]

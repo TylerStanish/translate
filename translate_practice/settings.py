@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'rest_auth.registration',
 
-    'translate'
+    'translate',
+    'practice'
 ]
 SITE_ID = 1
 ACCOUNT_AUTHENTICATION_METHOD = 'email'

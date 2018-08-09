@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from translate.models import TranslationEvent
+
+
+admin.site.register(TranslationEvent)

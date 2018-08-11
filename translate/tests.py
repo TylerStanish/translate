@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 from rest_framework import status
 from rest_framework.test import APIRequestFactory, APITestCase, force_authenticate
@@ -15,7 +16,7 @@ class TranslateTests(APITestCase):
 
     def test_permission_translate_post_with_no_credentials(self):
         factory = APIRequestFactory()
-        request = factory.post('/api/v1/translate/')
+        request = factory.post(reverse('translation'))
         response = translation(request)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
@@ -23,7 +24,7 @@ class TranslateTests(APITestCase):
         # same as above but with a user
         factory = APIRequestFactory()
         user = User.objects.get(email='tystanish@gmail.com')
-        request = factory.post('/api/v1/translate/', {
+        request = factory.post(reverse('translation'), {
             'from_lang': 'en',
             'to_lang': 'es',
             'text': 'hello',
@@ -34,13 +35,16 @@ class TranslateTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(len(TranslationEvent.objects.all()), 1)
 
-    def test_permission_translate_get(self):
+    def test_permission_translate_get_with_no_credentials(self):
+        factory = APIRequestFactory()
+        request = factory.get(reverse('translation'))
+        response = translation(request=request)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+    def test_permission_translate_get_with_credentials(self):
         factory = APIRequestFactory()
         user = User.objects.get(email='tystanish@gmail.com')
-        request = factory.get('/api/v1/translate/')
+        request = factory.get(reverse('translation'))
         force_authenticate(request=request, user=user)
         response = translation(request=request)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-    def test_can_create_translation(self):
-        pass

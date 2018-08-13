@@ -1,4 +1,4 @@
-from collections import OrderedDict
+from unittest.mock import patch
 
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -31,7 +31,9 @@ class TranslateTests(APITestCase):
         response = translation(request)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
-    def test_POST_permission_translate_with_credentials(self):
+    @patch('google.cloud.translate_v2.Client.translate')
+    def test_POST_permission_translate_with_credentials(self, translate_mock):
+        translate_mock.return_value = {'translatedText': 'hola'}
         # same as above but with a user
         factory = APIRequestFactory()
         user = User.objects.get(email='tystanish@gmail.com')
@@ -45,6 +47,7 @@ class TranslateTests(APITestCase):
         response = translation(request)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(len(TranslationEvent.objects.all()), 2)
+        translate_mock.assert_called()
 
     def test_GET_permission_translate_with_no_credentials(self):
         factory = APIRequestFactory()

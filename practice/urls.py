@@ -4,5 +4,5 @@ from .views import practice
 
 
 urlpatterns = [
-    path('', practice)
+    path('', practice, name='practice')
 ]

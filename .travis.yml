@@ -1,0 +1,10 @@
+language: python
+python:
+- '3.6'
+install:
+- pip install -r requirements.txt
+script:
+- python manage.py test
+before_install:
+- openssl aes-256-cbc -K $encrypted_67d934d1f145_key -iv $encrypted_67d934d1f145_iv
+  -in TranslationAppCreds.json.enc -out translate/TranslationAppCreds.json -d

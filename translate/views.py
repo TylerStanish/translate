@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from google.cloud import translate_v2
+from google.cloud import _http
+
 import os
 translate_client = translate_v2.Client()
 translate_client = translate_client.from_service_account_json(os.path.abspath('./translate/TranslationAppCreds.json'))

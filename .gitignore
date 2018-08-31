@@ -4,5 +4,6 @@ __pycache__/
 db.sqlite3
 translate/TranslationAppCreds.json
 client-secret.json
+translate/client-secret.json
 api_key.py
 credentials.tar.gz

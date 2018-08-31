@@ -12,6 +12,6 @@ from translate.serializers import TranslateSerializerResponse
 @permission_classes([IsAuthenticated])
 def practice(request):
     if request.method == 'GET':
-        practice_translations = TranslationEvent.objects.filter(will_practice=True)
+        practice_translations = TranslationEvent.objects.filter(will_practice=True, user=request.user)
         serializer = TranslateSerializerResponse(practice_translations, many=True)
         return Response(serializer.data)

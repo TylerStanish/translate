@@ -1,0 +1,11 @@
+language: python
+python:
+- '3.6'
+before_install:
+- tar -xzf credentials.tar.gz.enc
+- mkdir -p lib
+- gcloud auth activate-service-account --key-file client-secret.json
+install:
+- pip install -r requirements.txt
+script:
+- python manage.py test

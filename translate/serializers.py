@@ -22,4 +22,10 @@ class TranslateSerializerResponse(serializers.ModelSerializer):
 
     class Meta:
         model = TranslationEvent
-        exclude = ('user', 'id')
+        exclude = ('user',)
+
+
+class TranslateSerializerPatchRequest(serializers.Serializer):
+
+    id = serializers.IntegerField()
+    will_practice = serializers.BooleanField()

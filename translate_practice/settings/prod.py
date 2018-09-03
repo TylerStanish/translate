@@ -10,5 +10,5 @@ ALLOWED_HOSTS = ['*']
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(os.environ.get('DATABASE_URL'))
+    'default': dj_database_url.config(os.environ.get(default='DATABASE_URL'))
 }

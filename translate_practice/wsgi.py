@@ -8,12 +8,11 @@ https://docs.djangoproject.com/en/2.0/howto/deployment/wsgi/
 """
 
 import os
-
-from django.core.wsgi import get_wsgi_application
-
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "translate_practice.settings.prod")
 
-# application = get_wsgi_application()
 
-import django.core.handlers.wsgi
-application = django.core.handlers.wsgi.WSGIHandler()
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
+
+# import django.core.handlers.wsgi
+# application = django.core.handlers.wsgi.WSGIHandler()

@@ -8,3 +8,5 @@ client-secret.json
 translate/client-secret.json
 api_key.py
 s3creds.py
+django_secret_key.py
+postgres_prod.py

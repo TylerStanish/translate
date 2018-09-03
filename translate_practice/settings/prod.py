@@ -1,14 +1,14 @@
+import os
+import dj_database_url
 from .common import *
-from django_secret_key import secret_key
 
 DEBUG = True
-SECRET_KEY = secret_key
+SECRET_KEY = os.environ.get('SECRET_KEY')
 ALLOWED_HOSTS = ['*']
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-from postgres_prod import postgres_details
 DATABASES = {
-    'default': postgres_details
+    'default': dj_database_url.config(os.environ.get('DATABASE_URL'))
 }

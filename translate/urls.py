@@ -4,5 +4,5 @@ from .views import translation
 
 
 urlpatterns = [
-    path('', translation)
+    path('', translation, name='translation')
 ]

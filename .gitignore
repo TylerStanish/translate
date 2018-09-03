@@ -7,6 +7,4 @@ TranslationAppCreds.json
 client-secret.json
 translate/client-secret.json
 api_key.py
-credentials.tar.gz
 s3creds.py
-awscli-bundle.zip

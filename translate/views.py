@@ -7,6 +7,7 @@ from rest_framework import status
 
 from google.cloud import translate_v2
 
+
 translate_client = translate_v2.Client()
 translate_client = translate_client.from_service_account_json(os.path.abspath('./TranslationAppCreds.json'))
 

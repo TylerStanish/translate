@@ -1,6 +1,7 @@
 import os
 import boto3
 
+
 if not os.environ.get('AWS_ACCESS_KEY_ID', None):
     from s3creds import AWSAccessKeyId
     os.environ['AWS_ACCESS_KEY_ID'] = AWSAccessKeyId

@@ -1,13 +1,15 @@
 language: python
 branches:
   only:
-    - master
+  - master
 python:
 - '3.6'
 install:
 - pip install -r requirements.txt
 script:
 - python manage.py test
-before_install:
-- openssl aes-256-cbc -K $encrypted_67d934d1f145_key -iv $encrypted_67d934d1f145_iv
-  -in TranslationAppCreds.json.enc -out translate/TranslationAppCreds.json -d
+deploy:
+  app: translate-n-practice
+  provider: heroku
+  api_key:
+    secure: Yog/ow1r0JpA+jMsx0+zvBzm4irytHveCjiJfVtoJ8O6lanke7eHczpZTEu8SYq8nQtyX26mw3xSR5D1Dm4feEcDTEFqEV+Bjl35PtVIgWiJ1LoaDYfezEaZhkpt9rtV4EQ+/IEUS3Ag6B4ct65b08aNIcips2vn1LwR+cPFYf2tUjlCAswEp/SYXWJFy5/buZLWTxGKothilsCsqqd155yXkbaYzMLFn8QmK9mrqkkLo73+rWkhF6AHSxiyq+uAw6eqkcnUY70MG1bVRlY/56H+OReDDNfahzaSyj/99WqX8zK4UOCOs9p6WRtNkyOdxFqsG0SkoE7+nuEvC5VTCrFrcs9G9Lwxo+VTS9FtsNauN1YOURKgCh0NSj4AFQsPbJM4qi4T+bd6njOLoR+TgWUNScMevxiiMYFpY1k58EKDdW9SKWtmj5NrmrTiTKRMuMyVvsgx6did/FJLjOE5x9EoC/cqfwkUfR3Ozf/9hNbK5L8HI2OdLPVwnwEs6/nYJLj8Qoa1ieNfIBSLc5W9uNm+14OPP3xFKtaqgVZ3YMIFhmCK+MHSgcM5gM5T+Up/aIQd36I8olB1OlJ7zHNi25Ul7ftMgvt1HhMOPDcAPBQ8wFWGvDqLZsjpJvkTR71ijM2OihYTn6WgM/yzc/cjU+RH8zYFVYJF5gU+r2s55VE=

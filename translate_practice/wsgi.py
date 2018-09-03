@@ -11,8 +11,8 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "translate_practice.settings")
-#
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "translate_practice.settings.prod")
+
 # application = get_wsgi_application()
 
 import django.core.handlers.wsgi

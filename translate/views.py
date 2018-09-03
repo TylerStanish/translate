@@ -1,14 +1,14 @@
+import os
+
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 
 from google.cloud import translate_v2
-from google.cloud import _http
 
-import os
 translate_client = translate_v2.Client()
-translate_client = translate_client.from_service_account_json(os.path.abspath('./translate/TranslationAppCreds.json'))
+translate_client = translate_client.from_service_account_json(os.path.abspath('./TranslationAppCreds.json'))
 
 from translate.serializers import (
     TranslateSerializerRequest,
